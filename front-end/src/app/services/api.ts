@@ -10,19 +10,37 @@ export class Api {
     return this.http.post('http://localhost:8000/api/client/register', data);
   }
   login(data: any) {
-    return this.http.post('http://localhost:8000/api/client/login', data);
+    return this.http.post('http://localhost:8000/api/login_check', data);
   }
   getClients() {
-    return this.http.get('http://localhost:8000/api/client/client');
+    const token = localStorage.getItem('token');
+
+    return this.http.get('http://localhost:8000/api/client/client', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
   }
   createInvoice(data: any) {
     return this.http.post('http://localhost:8000/api/invoice/create', data);
   }
   getInvoice() {
-    return this.http.get('http://localhost:8000/api/invoice');
+    const token = localStorage.getItem('token');
+    return this.http.get('http://localhost:8000/api/invoice', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
   }
-  importInvoice(data : any){
-
-    return this.http.post('http://localhost:8000/api/invoice/import',data);
+  importInvoice(data: any) {
+    return this.http.post('http://localhost:8000/api/invoice/import', data);
+  }
+  downloadInvoice(){
+    const token = localStorage.getItem('token');
+    return this.http.get('http://localhost:8000/api/invoice/download', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
   };
 }

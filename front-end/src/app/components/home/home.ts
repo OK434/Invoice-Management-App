@@ -17,6 +17,7 @@ export class Home {
   ) {}
 
   ngOnInit() {
+
     this.api.getClients().subscribe((res: any) => {
       const data = Array.isArray(res[0]) ? res[0] : res;
       this.clientService.setClients(data);

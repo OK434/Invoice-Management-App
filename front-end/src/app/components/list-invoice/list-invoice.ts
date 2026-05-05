@@ -28,5 +28,6 @@ export class ListInvoice {
       const data = Array.isArray(res[0]) ? res[0] : res;
       this.invoice.set(data);
     });
+
   }
 }

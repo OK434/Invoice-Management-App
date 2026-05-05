@@ -28,9 +28,13 @@ export class Login {
   login() {
     if (this.form.invalid) return;
     this.api.login(this.form.value).subscribe({
-      next: (res) => {
+      next: (res: any) => {
+        localStorage.setItem('token', res.token);
+
         console.log('SUCCESS:', res);
+
         this.router.navigate(['/home']);
+
       },
       error: (err) => {
         console.log('ERROR:', err.error);

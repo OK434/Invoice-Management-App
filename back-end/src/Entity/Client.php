@@ -4,12 +4,13 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity]
-class Client implements UserInterface
+class Client implements UserInterface, PasswordAuthenticatedUserInterface
 {
     public function __construct()
     {
@@ -116,4 +117,5 @@ class Client implements UserInterface
 
         return (string)$this->email;
     }
+
 }

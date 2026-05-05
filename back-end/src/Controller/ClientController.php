@@ -8,9 +8,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route("/api/client")]
-class ClientController
+class ClientController extends AbstractController
 {
     public function __construct()
     {
@@ -57,36 +57,7 @@ class ClientController
         ], 201);
     }
 
-    #[Route("/login", name: "Login_Client", methods: ["POST"])]
-    public function loginClient(Request $request, EntityManagerInterface $em, ClientRepository $clientRepository): JsonResponse
-    {
-        $data = json_decode($request->getContent(), true);
-        if (!$data || !isset($data['email'], $data['password'])) {
-            return new JsonResponse([
-                'message' => 'Invalid data'
-            ], 400);
-        }
-        $client = $clientRepository->findByEmail($data['email']);
-        if (!$client) {
-            return new JsonResponse([
-                'message' => 'Invalid email'
-            ], 401);
-        }
-        if (!password_verify($data['password'], $client->getPassword())) {
-            return new JsonResponse([
-                'message' => 'Invalid password'
-            ], 401);
-        }
-        return new JsonResponse([
-            'message' => 'Login successful',
-            'client' => [
-                'email' => $client->getEmail(),
-                'clientName' => $client->getClientName(),
-                'addressName' => $client->getAddressName(),
-                'companyName' => $client->getCompanyName()
-            ]
-        ], 200);
-    }
+
 
     #[Route('/client', name: "Client", methods: ["GET"])]
     public function getClients(Request $request, EntityManagerInterface $em): JsonResponse
@@ -102,7 +73,7 @@ class ClientController
                 'addressName' => $client->getAddressName()
             ];
         }
-        return new JsonResponse([$data], 200);
+        return new JsonResponse(($data), 200);
     }
 }
 

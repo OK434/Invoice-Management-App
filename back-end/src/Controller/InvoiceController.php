@@ -8,6 +8,8 @@ use App\Entity\Invoice;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api/invoice')]
@@ -182,4 +184,5 @@ class InvoiceController
             'failed' => $failed
         ]);
     }
+
 }
