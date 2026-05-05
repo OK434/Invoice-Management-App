@@ -21,12 +21,12 @@ class InvoiceController
     #[Route('/create', name: 'create_invoice', methods: ['POST'])]
     public function createInvoice(Request $request, EntityManagerInterface $em): JsonResponse
     {
+
         $data = json_decode($request->getContent(), true);
 
         if (!$data || !isset($data['client_id'], $data['items'])) {
             return new JsonResponse(['message' => 'Invalid data'], 400);
         }
-
         $client = $em->getRepository(\App\Entity\Client::class)->find($data['client_id']);
 
         if (!$client) {
@@ -114,7 +114,7 @@ class InvoiceController
         $failed = [];
         $rowNumber = 0;
 
-        while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+        while (($row = fgetcsv($handle, 1000, ';')) !== false) {
             $rowNumber++;
 
             // skip header
