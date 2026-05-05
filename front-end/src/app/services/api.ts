@@ -35,12 +35,12 @@ export class Api {
   importInvoice(data: any) {
     return this.http.post('http://localhost:8000/api/invoice/import', data);
   }
-  downloadInvoice(){
-    const token = localStorage.getItem('token');
+  downloadCsv(token: string) {
     return this.http.get('http://localhost:8000/api/invoice/download', {
       headers: {
         Authorization: 'Bearer ' + token,
       },
+      responseType: 'blob',
     });
-  };
+  }
 }

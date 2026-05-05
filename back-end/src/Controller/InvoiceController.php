@@ -184,5 +184,42 @@ class InvoiceController
             'failed' => $failed
         ]);
     }
+    #[Route('/download', name: 'download_invoice', methods: ['GET'])]
+    public function downloadCsv(EntityManagerInterface $em): StreamedResponse
+    {
+        $response = new StreamedResponse(function () use ($em) {
+            $handle = fopen('php://output', 'w+');
 
+            // Header
+            fputcsv($handle, ['Client Name', 'Company', 'Description', 'Quantity', 'Price'], ';');
+
+            // Fetch invoices
+            $invoices = $em->getRepository(Invoice::class)->findAll();
+
+            $invoices = $em->getRepository(Invoice::class)->findAll();
+
+            foreach ($invoices as $invoice) {
+                $client = $invoice->getClient();
+
+                fputcsv($handle, [
+                    $client?->getClientName(),
+                    $client?->getCompanyName(),
+                    $invoice->getDescription(),
+                    $invoice->getInvoiceQuantity(),
+                    $invoice->getInvoicePrice()
+                ], ';');
+            }
+
+            fclose($handle);
+        });
+
+        $response->headers->set('Content-Type', 'text/csv');
+
+        $response->headers->set(
+            'Content-Disposition',
+            'attachment; filename="invoices.csv"'
+        );
+
+        return $response;
+    }
 }

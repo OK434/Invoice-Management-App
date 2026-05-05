@@ -15,6 +15,25 @@ export class ListInvoice {
     public clientService: Client,
   ) {}
   invoice = signal<any[]>([]);
+  download() {
+    const token = localStorage.getItem('token');
+
+    this.api.downloadCsv(token!).subscribe({
+      next: (res: Blob) => {
+        const url = window.URL.createObjectURL(res);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'invoices.csv';
+        a.click();
+
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
   getCompanyName(clientId: number) {
     const client = this.clientService.Clients().find((c) => c.id === clientId);
     return client ? client.companyName : 'Unknown';
@@ -28,6 +47,5 @@ export class ListInvoice {
       const data = Array.isArray(res[0]) ? res[0] : res;
       this.invoice.set(data);
     });
-
   }
 }

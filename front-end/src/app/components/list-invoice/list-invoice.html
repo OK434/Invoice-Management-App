@@ -1,9 +1,14 @@
+<div class="containerButton">
+  <button class="download-btn" (click)="download()">
+    📥 Download Invoices
+  </button>
+</div>
 <ul>
   @for (inv of invoice(); track inv.id) {
     <li>
       <div class="card">
         <p><strong>Client:</strong>{{ inv.client.name }}</p>
-        <p><strong>Company:</strong>{{ getCompanyName(inv.client.id ) }}</p>
+        <p><strong>Company:</strong>{{ getCompanyName(inv.client.id) }}</p>
         <p><strong>Data:</strong> {{ (inv.date) }}</p>
         <p><strong>Description:</strong> {{ inv.description }}</p>
         <p><strong>Quantity:</strong> {{ inv.invoiceQuantity }}</p>
