@@ -1,0 +1,23 @@
+security:
+    password_hashers:
+        App\Entity\Client:
+            algorithm: auto
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\Client
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            stateless: false
+
+
+
+
+
