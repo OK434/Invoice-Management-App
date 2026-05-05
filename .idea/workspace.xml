@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3365afa-8739-4df1-8f0d-051c48659e43" name="Changes" comment="delete files">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="b3365afa-8739-4df1-8f0d-051c48659e43" name="Changes" comment="Add front-end &#10;fix import csv file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/Controller/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/Controller/InvoiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/components/import-invoice/import-invoice.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/components/import-invoice/import-invoice.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/components/import-invoice/import-invoice.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/components/import-invoice/import-invoice.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/components/layout/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/app/components/layout/layout.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +250,7 @@
       <workItem from="1777790247201" duration="1480000" />
       <workItem from="1777793128003" duration="17372000" />
       <workItem from="1777872831547" duration="22137000" />
-      <workItem from="1777973673833" duration="15238000" />
+      <workItem from="1777973673833" duration="15892000" />
     </task>
     <task id="LOCAL؜-٠٠٠٠١" summary="First comment -all app-">
       <option name="closed" value="true" />
@@ -286,7 +276,15 @@
       <option name="project" value="LOCAL؜" />
       <updated>1777990021696</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL؜-٠٠٠٠٤" summary="Add front-end &#10;fix import csv file">
+      <option name="closed" value="true" />
+      <created>1777997969235</created>
+      <option name="number" value="٠٠٠٠٤" />
+      <option name="presentableId" value="LOCAL؜-٠٠٠٠٤" />
+      <option name="project" value="LOCAL؜" />
+      <updated>1777997969235</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +301,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -319,6 +317,7 @@
     <MESSAGE value="First comment -all app-" />
     <MESSAGE value="All app" />
     <MESSAGE value="delete files" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete files" />
+    <MESSAGE value="Add front-end &#10;fix import csv file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add front-end &#10;fix import csv file" />
   </component>
 </project>
