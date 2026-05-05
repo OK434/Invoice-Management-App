@@ -1,0 +1,50 @@
+@if(errorMessage()){
+  <div *ngIf="errorMessage()" style="color:#dc2626; margin-top:10px;">
+    {{ errorMessage() }}
+  </div>
+}
+<div class="container">
+
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <h2 style="text-align:center; margin-bottom:15px;">Welcome back</h2>
+
+    <div>
+
+      <!-- EMAIL -->
+      <label>Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        name="email"
+        [class.error]="form.get('email')?.invalid && form.get('email')?.touched"
+      >
+
+      <span class="error-text"
+            *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+      Email is required
+    </span>
+
+
+      <!-- PASSWORD -->
+      <label>Password</label>
+      <input
+        type="password"
+        formControlName="password"
+        name="password"
+        [class.error]="form.get('password')?.invalid && form.get('password')?.touched"
+      >
+
+      <span class="error-text"
+            *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+      Password is required
+    </span>
+
+
+      <!-- BUTTONS -->
+      <button type="submit" [disabled]="form.invalid">Login</button>
+      <button type="button" (click)="singIn()">Sign In</button>
+
+    </div>
+  </form>
+
+</div>

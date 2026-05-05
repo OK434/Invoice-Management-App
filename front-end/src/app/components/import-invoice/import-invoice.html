@@ -1,0 +1,6 @@
+<input type="file" (change)="onFileSelected($event)" hidden #fileInput>
+
+<div class="upload-box" (click)="fileInput.click()">
+  <span>⬆ Upload File</span>
+  <p *ngIf="fileName">{{ fileName }}</p>
+</div>

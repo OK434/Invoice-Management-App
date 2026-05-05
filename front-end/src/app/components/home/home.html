@@ -1,0 +1,24 @@
+<div class="container">
+
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Search..."
+      (input)="clientService.search.set($any($event.target).value)"
+    />
+  </div>
+
+  <ul>
+    @for (client of clientService.filteredClients(); track client.id) {
+      <li>
+        <div>
+          <p>{{ client.clientName }}</p>
+          <p>{{ client.email }}</p>
+          <p>{{ client.companyName }}</p>
+          <p>{{ client.addressName }}</p>
+        </div>
+      </li>
+    }
+  </ul>
+
+</div>

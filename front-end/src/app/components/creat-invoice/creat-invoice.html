@@ -1,0 +1,89 @@
+@if (!selectedClient()) {
+  <div class="containerButton">
+
+
+    <button (click)="openDialog()">Creating Invoice</button>
+  </div>
+}
+@if (selectedClient()) {
+
+  <div class="invoice-box">
+
+    <h3>Invoice for: {{ selectedClient()?.clientName }},
+      Company Name :{{ selectedClient()?.companyName }} </h3>
+
+    <div class="items">
+      @for (item of items(); track $index) {
+
+        <div class="item">
+
+          <input
+            type="text"
+            placeholder="Description"
+            [value]="item.description"
+            (input)="updateItem($index, 'description', $any($event.target).value)"
+          />
+
+          <input
+            type="number"
+            placeholder="Qty"
+            [value]="item.quantity"
+            (input)="updateItem($index, 'quantity', $any($event.target).value)"
+          />
+
+          <input
+            type="number"
+            placeholder="Price"
+            [value]="item.price"
+            (input)="updateItem($index, 'price', $any($event.target).value)"
+          />
+
+          <button (click)="removeItem($index)">❌</button>
+
+        </div>
+
+      }
+    </div>
+
+    <button (click)="addItem()">+ Add Item</button>
+
+    <h4>Total: {{ total() }}</h4>
+
+    <button class="submit" (click)="createInvoice()">Create Invoice</button>
+    <button (click)="cancelInvoice()">Cancel</button>
+
+  </div>
+
+}
+
+@if (isOpen()) {
+  <div class="overlay" (click)="closeDialog()">
+    <div class="dialog" (click)="$event.stopPropagation()">
+
+      <div class="container">
+
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search..."
+            (input)="clientService.search.set($any($event.target).value)"
+          />
+        </div>
+
+        <ul>
+          @for (client of clientService.filteredClients(); track client.id) {
+            <li (click)="selectClient(client)" class="card">
+              <div>
+                <p class="name">{{ client.clientName }}</p>
+                <p>{{ client.companyName }}</p>
+              </div>
+            </li>
+          }
+        </ul>
+
+      </div>
+
+      <button class="close-btn" (click)="closeDialog()">Close</button>
+    </div>
+  </div>
+}

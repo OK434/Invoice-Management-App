@@ -1,0 +1,20 @@
+<div class="layout">
+
+  <div class="topbar">
+    <button (click)="toggleMenu()">☰</button>
+    <h3>Invoice Management App</h3>
+  </div>
+
+  <div class="sidebar" [class.open]="isOpen ">
+    <a routerLink="home" (click)="toggleMenu()">Home</a>
+    <a routerLink="creat-invoice" (click)="toggleMenu()">CreatInvoice</a>
+    <a routerLink="list-invoice" (click)="toggleMenu()">ListInvoice</a>
+    <a routerLink="import-invoice" (click)="toggleMenu()">ImportInvoice</a>
+
+  </div>
+
+  <div class="content" (click)="$event.stopPropagation()">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

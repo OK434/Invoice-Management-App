@@ -1,0 +1,16 @@
+.client-box {
+  margin-bottom: 20px;
+}
+
+.client-box h3 {
+  margin-bottom: 10px;
+  color: #2563eb;
+}
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #f9fafb;
+}

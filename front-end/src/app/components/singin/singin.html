@@ -1,0 +1,55 @@
+@if (errorMessage()) {
+  <div *ngIf="errorMessage()" style="color:#dc2626; margin-top:10px;">
+    {{ errorMessage() }}
+  </div>
+
+}
+<div class="container">
+
+  <form [formGroup]="form" (ngSubmit)="signIn()">
+    <h2>Create Account</h2>
+
+    <div>
+      <label>Client Name</label>
+      <input type="text" formControlName="clientName">
+      <small *ngIf="form.get('clientName')?.touched && form.get('clientName')?.invalid">
+        Required
+      </small>
+
+      <label>Email</label>
+      <input type="email" formControlName="email">
+      <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        Invalid email
+      </small>
+
+      <label>Password</label>
+      <input type="password" formControlName="password">
+      <small *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+        Required
+      </small>
+
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword">
+      <small *ngIf="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.invalid">
+        Required
+      </small>
+
+      <label>Company Name</label>
+      <input type="text" formControlName="companyName">
+      <small *ngIf="form.get('companyName')?.touched && form.get('companyName')?.invalid">
+        Required
+      </small>
+
+      <label>Address</label>
+      <input type="text" formControlName="addressName">
+      <small *ngIf="form.get('address')?.touched && form.get('address')?.invalid">
+        Required
+      </small>
+
+      <button type="submit" [disabled]="form.invalid">Sign In</button>
+      <button type="button" (click)="logIn()">Log In</button>
+    </div>
+
+  </form>
+</div>
+
