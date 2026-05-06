@@ -8,6 +8,7 @@ import { ImportInvoice } from './components/import-invoice/import-invoice';
 import { Layout } from './components/layout/layout';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
   { path: 'singin', component: Singin },
 
@@ -15,7 +16,6 @@ export const routes: Routes = [
     path: '',
     component: Layout,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: Home },
       { path: 'creat-invoice', component: CreatInvoice },
       { path: 'list-invoice', component: ListInvoice },
