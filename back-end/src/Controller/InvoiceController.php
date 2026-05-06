@@ -119,7 +119,6 @@ class InvoiceController
         while (($row = fgetcsv($handle, 1000, ';')) !== false) {
             $rowNumber++;
 
-            // skip header
             if ($rowNumber === 1) continue;
 
             try {
@@ -129,12 +128,10 @@ class InvoiceController
                 $price = isset($row[3]) ? (int)$row[3] : 0;
                 $dateString = $row[4] ?? null;
 
-                // ✅ validation
                 if (!$clientName || !$description || $quantity <= 0 || $price <= 0) {
                     throw new \Exception('Invalid data');
                 }
 
-                // ✅ find client
                 $client = $em->getRepository(\App\Entity\Client::class)
                     ->findOneBy(['clientName' => $clientName]);
 
@@ -143,7 +140,6 @@ class InvoiceController
                 }
 
 
-                // ✅ parse date
                 try {
                     $date = $dateString
                         ? new \DateTime($dateString)
@@ -152,10 +148,8 @@ class InvoiceController
                     throw new \Exception('Invalid date format');
                 }
 
-                // ✅ calculate total
                 $total = $quantity * $price;
                 $client_id = $client->getId();
-                // ✅ create invoice
                 $invoice = new Invoice();
                 $invoice->setClient($client);
                 $invoice->setDescription($description);
