@@ -73,7 +73,7 @@
         <ul>
           @for (client of clientService.filteredClients(); track client.id) {
             <li (click)="selectClient(client)" class="card">
-              <div>
+              <div class="card-content">
                 <p class="name">{{ client.clientName }}</p>
                 <p>{{ client.companyName }}</p>
               </div>

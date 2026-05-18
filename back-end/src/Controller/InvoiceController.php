@@ -190,8 +190,6 @@ class InvoiceController
             // Fetch invoices
             $invoices = $em->getRepository(Invoice::class)->findAll();
 
-            $invoices = $em->getRepository(Invoice::class)->findAll();
-
             foreach ($invoices as $invoice) {
                 $client = $invoice->getClient();
 

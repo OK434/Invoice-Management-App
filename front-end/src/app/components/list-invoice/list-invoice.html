@@ -3,17 +3,46 @@
     📥 Download Invoices
   </button>
 </div>
+
 <ul>
   @for (inv of invoice(); track inv.id) {
     <li>
       <div class="card">
-        <p><strong>Client:</strong>{{ inv.client.name }}</p>
-        <p><strong>Company:</strong>{{ getCompanyName(inv.client.id) }}</p>
-        <p><strong>Data:</strong> {{ (inv.date) }}</p>
-        <p><strong>Description:</strong> {{ inv.description }}</p>
-        <p><strong>Quantity:</strong> {{ inv.invoiceQuantity }}</p>
-        <p><strong>Price:</strong> {{ inv.invoicePrice }}</p>
-        <p><strong>Total:</strong> {{ inv.invoiceTotal }}</p>
+
+        <div class="title">
+          {{ inv.client.name }}
+        </div>
+
+        <p>
+          <strong>Company</strong>
+          <span>{{ getCompanyName(inv.client.id) }}</span>
+        </p>
+
+        <p>
+          <strong>Date</strong>
+          <span>{{ inv.date }}</span>
+        </p>
+
+        <p>
+          <strong>Description</strong>
+          <span>{{ inv.description }}</span>
+        </p>
+
+        <p>
+          <strong>Quantity</strong>
+          <span>{{ inv.invoiceQuantity }}</span>
+        </p>
+
+        <p>
+          <strong>Price</strong>
+          <span>${{ inv.invoicePrice }}</span>
+        </p>
+
+        <p>
+          <strong>Total</strong>
+          <span>${{ inv.invoiceTotal }}</span>
+        </p>
+
       </div>
     </li>
   }

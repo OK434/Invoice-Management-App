@@ -28,9 +28,9 @@ export class CreatInvoice {
     this.selectedClient.set(client);
     this.closeDialog();
   }
-  cancelInvoice(){
+  cancelInvoice() {
     this.selectedClient.set(null);
-  };
+  }
   ngOnInit() {
     this.api.getClients().subscribe((res: any) => {
       const data = Array.isArray(res[0]) ? res[0] : res;
@@ -61,8 +61,8 @@ export class CreatInvoice {
       client_id: this.selectedClient()?.id,
       items: this.items(),
     };
-
-    this.api.createInvoice(data).subscribe({
+    const token = localStorage.getItem('token');
+    this.api.createInvoice(data, token!).subscribe({
       next: (res) => console.log(res),
       error: (err) => console.log(err),
     });

@@ -21,8 +21,13 @@ export class Api {
       },
     });
   }
-  createInvoice(data: any) {
-    return this.http.post('http://localhost:8000/api/invoice/create', data);
+  createInvoice(data: any,token: string) {
+    return this.http.post('http://localhost:8000/api/invoice/create', data, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+      responseType: 'blob',
+    });
   }
   getInvoice() {
     const token = localStorage.getItem('token');
@@ -32,8 +37,13 @@ export class Api {
       },
     });
   }
-  importInvoice(data: any) {
-    return this.http.post('http://localhost:8000/api/invoice/import', data);
+  importInvoice(data: any, token: string) {
+    return this.http.post('http://localhost:8000/api/invoice/import', data, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+      responseType: 'blob',
+    });
   }
   downloadCsv(token: string) {
     return this.http.get('http://localhost:8000/api/invoice/download', {

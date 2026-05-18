@@ -5,7 +5,6 @@ import { ImportInvoice } from './import-invoice';
 describe('ImportInvoice', () => {
   let component: ImportInvoice;
   let fixture: ComponentFixture<ImportInvoice>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ImportInvoice],

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { Api } from '../../services/api';
 import { NgIf } from '@angular/common';
 
@@ -24,8 +24,9 @@ export class ImportInvoice {
 
     const formData = new FormData();
     formData.append('file', file);
+    const token = localStorage.getItem('token');
 
-    this.api.importInvoice(formData).subscribe({
+    this.api.importInvoice(formData,token!).subscribe({
       next: (res) => console.log(res),
       error: (err) => console.log(err),
     });
